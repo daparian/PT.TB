@@ -169,14 +169,15 @@ export const Contact: React.FC = () => {
 
       {/* Google Maps Placeholder */}
       <section className="h-96 bg-slate-200 relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-            <p className="text-slate-500 font-medium">Google Maps Integration Placeholder</p>
-            <p className="text-slate-400 text-sm">Lokasi: Jakarta Selatan, Indonesia</p>
-          </div>
-        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.97462924885!2d98.64674417524354!3d3.5932917963808584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312e24d45ca671%3A0xadb2ee2ceb9bac5d!2sJangka%20Residence!5e0!3m2!1sen!2sid!4v1774847269637!5m2!1sen!2sid" 
+          width="400" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
       </section>
-    </div>
   );
 };
+
