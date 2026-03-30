@@ -170,7 +170,7 @@ export const Contact: React.FC = () => {
       {/* Google Maps Placeholder */}
       <section className="h-96 relative">
   <iframe
-    src="https://www.google.com/maps?q=Jakarta+Selatan&output=embed"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.97462924885!2d98.64674417524354!3d3.5932917963808584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312e24d45ca671%3A0xadb2ee2ceb9bac5d!2sJangka%20Residence!5e0!3m2!1sen!2sid!4v1774847269637!5m2!1sen!2sid" 
     className="w-full h-full border-0"
     loading="lazy"
   ></iframe>
