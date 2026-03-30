@@ -35,7 +35,7 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">Alamat Kantor</h4>
-                      <p className="text-slate-600 text-sm mt-1">Jl. Jendral Sudirman No. 123, Jakarta Selatan, 12190, Indonesia</p>
+                      <p className="text-slate-600 text-sm mt-1">JL. JANGKA KOMP. JANGKA RESIDENCE LK IV, 10, SEI PUTIH BARAT, MEDAN PETISAH, KOTA MEDAN, SUMATERA UTARA, 20118</p>
                     </div>
                   </div>
                   
@@ -45,8 +45,8 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">Telepon & WhatsApp</h4>
-                      <p className="text-slate-600 text-sm mt-1">+62 21 1234 5678</p>
-                      <p className="text-slate-600 text-sm">+62 812 3456 7890 (WhatsApp)</p>
+                      <p className="text-slate-600 text-sm mt-1">+6285229502574</p>
+                      <p className="text-slate-600 text-sm">+6281370742417 (WhatsApp)</p>
                     </div>
                   </div>
 
@@ -56,8 +56,8 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">Email</h4>
-                      <p className="text-slate-600 text-sm mt-1">info@teknotamabaru.co.id</p>
-                      <p className="text-slate-600 text-sm">sales@teknotamabaru.co.id</p>
+                      <p className="text-slate-600 text-sm mt-1">teknotama.baru@gmail.com</p>
+                      <p className="text-slate-600 text-sm">daffaadrian189@gmail.com</p>
                     </div>
                   </div>
 
@@ -68,7 +68,7 @@ export const Contact: React.FC = () => {
                     <div>
                       <h4 className="font-bold text-slate-900">Jam Operasional</h4>
                       <p className="text-slate-600 text-sm mt-1">Senin - Jumat: 08:00 - 17:00</p>
-                      <p className="text-slate-600 text-sm">Sabtu: 08:00 - 12:00</p>
+                      <p className="text-slate-600 text-sm">Sabtu-Minggu : Libur</p>
                     </div>
                   </div>
                 </div>
