@@ -78,7 +78,7 @@ export const Contact: React.FC = () => {
                 <h4 className="text-xl font-bold mb-4">Butuh Respon Cepat?</h4>
                 <p className="text-white/60 text-sm mb-6">Chat langsung dengan tim sales kami melalui WhatsApp untuk konsultasi instan.</p>
                 <a
-                  href="https://wa.me/628123456789"
+                  href="https://wa.me/6281370742417"
                   className="flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 py-3 rounded-xl font-bold transition-colors"
                 >
                   <MessageCircle className="w-5 h-5" />
