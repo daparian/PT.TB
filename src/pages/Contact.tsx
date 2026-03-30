@@ -68,7 +68,7 @@ export const Contact: React.FC = () => {
                     <div>
                       <h4 className="font-bold text-slate-900">Jam Operasional</h4>
                       <p className="text-slate-600 text-sm mt-1">Senin - Jumat: 08:00 - 17:00</p>
-                      <p className="text-slate-600 text-sm">Sabtu-Minggu : Libur</p>
+                      <p className="text-slate-600 text-sm">Sabtu - Minggu / Tanggal Merah : Libur</p>
                     </div>
                   </div>
                 </div>
