@@ -57,12 +57,10 @@ export const Navbar: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  'text-sm font-medium transition-colors hover:text-primary',
+                  'text-sm font-medium transition-colors',
                   location.pathname === item.path
-                    ? 'text-primary'
-                    : !isTransparent
-                    ? 'text-slate-700'
-                    : 'text-white'
+                    ? (isTransparent ? 'text-white font-bold' : 'text-primary font-bold')
+                    : (isTransparent ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-primary')
                 )}
               >
                 {t(`nav.${translationKey}`)}
@@ -72,8 +70,8 @@ export const Navbar: React.FC = () => {
           <button 
             onClick={toggleLanguage}
             className={cn(
-              "flex items-center space-x-1 text-sm font-medium hover:text-primary transition-colors",
-              !isTransparent ? "text-slate-500" : "text-slate-300"
+              "flex items-center space-x-1 text-sm font-medium transition-colors",
+              !isTransparent ? "text-slate-500 hover:text-primary" : "text-slate-200 hover:text-white"
             )}
           >
             <Globe className="w-4 h-4" />
@@ -81,7 +79,12 @@ export const Navbar: React.FC = () => {
           </button>
           <Link
             to="/contact"
-            className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all"
+            className={cn(
+              "px-5 py-2 rounded-full text-sm font-semibold transition-all",
+              isTransparent 
+                ? "bg-white text-primary hover:bg-slate-100" 
+                : "bg-primary text-white hover:bg-primary-dark"
+            )}
           >
             {t('nav.quote')}
           </Link>
