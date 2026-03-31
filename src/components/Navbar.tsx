@@ -35,11 +35,9 @@ export const Navbar: React.FC = () => {
     >
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-3">
-          <svg viewBox="0 0 100 100" className="w-10 h-10 shadow-sm rounded-2xl shrink-0" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="100" rx="24" fill="#0f172a" />
-            <text x="50" y="52" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="42" fill="#ffffff" textAnchor="middle" dominantBaseline="middle" letterSpacing="1">TB</text>
-            <circle cx="76" cy="24" r="8" fill="#0ea5e9" />
-          </svg>
+          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shrink-0 shadow-sm">
+            <span className="text-white font-bold text-xl">TB</span>
+          </div>
           <div className="flex flex-col">
             <span className={cn('font-bold text-lg leading-tight', !isTransparent ? 'text-slate-900' : 'text-white')}>
               PT. TEKNOTAMA BARU
