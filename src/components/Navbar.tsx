@@ -8,6 +8,8 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const isTransparent = isHomePage && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +23,7 @@ export const Navbar: React.FC = () => {
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        !isTransparent ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       )}
     >
       <div className="container-custom flex justify-between items-center">
@@ -30,10 +32,10 @@ export const Navbar: React.FC = () => {
             <span className="text-white font-bold text-xl">TB</span>
           </div>
           <div className="flex flex-col">
-            <span className={cn('font-bold text-lg leading-tight', isScrolled ? 'text-primary' : 'text-white')}>
+            <span className={cn('font-bold text-lg leading-tight', !isTransparent ? 'text-primary' : 'text-white')}>
               PT. TEKNOTAMA BARU
             </span>
-            <span className={cn('text-[10px] tracking-widest uppercase', isScrolled ? 'text-slate-500' : 'text-slate-200')}>
+            <span className={cn('text-[10px] tracking-widest uppercase', !isTransparent ? 'text-slate-500' : 'text-slate-200')}>
               Service & Procurement
             </span>
           </div>
@@ -49,7 +51,7 @@ export const Navbar: React.FC = () => {
                 'text-sm font-medium transition-colors hover:text-accent',
                 location.pathname === item.path
                   ? 'text-accent'
-                  : isScrolled
+                  : !isTransparent
                   ? 'text-slate-700'
                   : 'text-white'
               )}
@@ -73,7 +75,7 @@ export const Navbar: React.FC = () => {
         <div className="md:hidden flex items-center space-x-4">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={cn(isScrolled ? 'text-slate-900' : 'text-white')}
+            className={cn(!isTransparent ? 'text-slate-900' : 'text-white')}
           >
             {isOpen ? <X /> : <Menu />}
           </button>
