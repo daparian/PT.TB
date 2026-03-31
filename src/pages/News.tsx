@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const NEWS = [
   {
@@ -30,13 +31,15 @@ const NEWS = [
 ];
 
 export const News: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className="pt-20">
-      <section className="bg-slate-50 py-24">
+    <div>
+      <section className="bg-slate-900 pt-40 pb-24">
         <div className="container-custom text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">Berita & Artikel</h1>
-          <p className="text-slate-500 max-w-2xl mx-auto">
-            Dapatkan informasi terbaru mengenai perkembangan perusahaan, tren industri, dan wawasan bisnis dari para ahli kami.
+          <h1 className="text-4xl font-bold text-white mb-4">{t('news.title')}</h1>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            {t('news.subtitle')}
           </p>
         </div>
       </section>
@@ -56,33 +59,33 @@ export const News: React.FC = () => {
                 <div className="aspect-video overflow-hidden rounded-2xl mb-6 relative">
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={t(`news.items.${item.id}.title`)}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
-                    Update
+                    {t('news.update')}
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4 text-xs text-slate-400 font-medium">
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-3 h-3" />
-                      <span>{item.date}</span>
+                      <span>{t(`news.items.${item.id}.date`, { defaultValue: item.date })}</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <User className="w-3 h-3" />
-                      <span>{item.author}</span>
+                      <span>{t(`news.items.${item.id}.author`, { defaultValue: item.author })}</span>
                     </div>
                   </div>
                   <h3 className="text-xl font-bold group-hover:text-primary transition-colors leading-tight">
-                    {item.title}
+                    {t(`news.items.${item.id}.title`)}
                   </h3>
                   <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
-                    {item.excerpt}
+                    {t(`news.items.${item.id}.excerpt`)}
                   </p>
                   <button className="text-primary font-bold text-sm flex items-center group-hover:translate-x-1 transition-transform">
-                    Baca Selengkapnya <ArrowRight className="ml-2 w-4 h-4" />
+                    {t('news.readMore')} <ArrowRight className="ml-2 w-4 h-4" />
                   </button>
                 </div>
               </motion.article>
@@ -96,17 +99,17 @@ export const News: React.FC = () => {
         <div className="container-custom">
           <div className="bg-primary p-12 rounded-[3rem] text-white flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="max-w-md">
-              <h2 className="text-3xl font-bold mb-4">Berlangganan Newsletter</h2>
-              <p className="text-white/70">Dapatkan update terbaru dan penawaran eksklusif langsung di email Anda setiap bulan.</p>
+              <h2 className="text-3xl font-bold mb-4">{t('news.newsletterTitle')}</h2>
+              <p className="text-white/70">{t('news.newsletterDesc')}</p>
             </div>
             <form className="flex w-full max-w-md gap-2">
               <input
                 type="email"
-                placeholder="Email bisnis Anda"
+                placeholder={t('news.emailPlaceholder')}
                 className="flex-grow px-6 py-4 rounded-full bg-white text-slate-900 focus:outline-none"
               />
               <button className="bg-slate-900 px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-colors">
-                Daftar
+                {t('news.subscribe')}
               </button>
             </form>
           </div>

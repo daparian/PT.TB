@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-8">
       <div className="container-custom">
@@ -17,7 +20,7 @@ export const Footer: React.FC = () => {
               <span className="text-white font-bold text-lg">PT. TEKNOTAMA BARU</span>
             </div>
             <p className="text-sm leading-relaxed">
-              Solusi terpercaya untuk layanan jasa dan pengadaan barang berkualitas tinggi di Indonesia. Kami berkomitmen untuk memberikan efisiensi dan nilai tambah bagi setiap mitra bisnis kami.
+              {t('footer.desc')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
@@ -29,33 +32,31 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold mb-6">Tautan Cepat</h4>
+            <h4 className="text-white font-bold mb-6">{t('footer.quickLinks')}</h4>
             <ul className="space-y-4 text-sm">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.path}>
-                  <Link to={item.path} className="hover:text-white transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              <li><Link to="/about" className="hover:text-white transition-colors">{t('nav.about')}</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">{t('nav.services')}</Link></li>
+              <li><Link to="/products" className="hover:text-white transition-colors">{t('nav.products')}</Link></li>
+              <li><Link to="/portfolio" className="hover:text-white transition-colors">{t('nav.portfolio')}</Link></li>
+              <li><Link to="/news" className="hover:text-white transition-colors">{t('nav.news')}</Link></li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-bold mb-6">Layanan Kami</h4>
+            <h4 className="text-white font-bold mb-6">{t('footer.services')}</h4>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/services" className="hover:text-white transition-colors">Outsourcing Tenaga Kerja</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Pemeliharaan Teknis</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Pengadaan Alat Kantor</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Solusi IT & Elektronik</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Peralatan Industri</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">{t('services.items.outsourcing.title')}</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">{t('services.items.maintenance.title')}</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">{t('services.items.office-supplies.title')}</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">{t('services.items.it-electronics.title')}</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">{t('services.items.industrial-supplies.title')}</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white font-bold mb-6">Hubungi Kami</h4>
+            <h4 className="text-white font-bold mb-6">{t('footer.contact')}</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
@@ -74,10 +75,10 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
-          <p>© 2026 PT. TEKNOTAMA BARU. Seluruh Hak Cipta Dilindungi.</p>
+          <p>{t('footer.copyright')}</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white">Kebijakan Privasi</a>
-            <a href="#" className="hover:text-white">Syarat & Ketentuan</a>
+            <a href="#" className="hover:text-white">{t('footer.privacy')}</a>
+            <a href="#" className="hover:text-white">{t('footer.terms')}</a>
           </div>
         </div>
       </div>

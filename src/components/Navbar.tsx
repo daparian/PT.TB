@@ -10,11 +10,11 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-  const isTransparent = isHomePage && !isScrolled;
+  const isTransparent = !isScrolled;
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'id' ? 'en' : 'id';
+    const currentLang = i18n.language || 'id';
+    const newLang = currentLang.startsWith('id') ? 'en' : 'id';
     i18n.changeLanguage(newLang);
   };
 
@@ -35,22 +35,16 @@ export const Navbar: React.FC = () => {
     >
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-3">
-          <svg viewBox="0 0 100 100" className="w-11 h-11 rounded shadow-sm" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#7ab837" />
-                <stop offset="100%" stopColor="#4a8c24" />
-              </linearGradient>
-            </defs>
-            <rect width="100" height="100" fill="url(#logoGrad)" stroke="#4b7cba" strokeWidth="4" />
-            <text x="13" y="66" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">T</text>
-            <text x="43" y="84" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">B</text>
+          <svg viewBox="0 0 100 100" className="w-10 h-10 shadow-sm rounded-2xl shrink-0" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="24" fill="#0f172a" />
+            <text x="50" y="52" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="42" fill="#ffffff" textAnchor="middle" dominantBaseline="middle" letterSpacing="1">TB</text>
+            <circle cx="76" cy="24" r="8" fill="#0ea5e9" />
           </svg>
           <div className="flex flex-col">
-            <span className={cn('font-bold text-lg leading-tight', !isTransparent ? 'text-primary' : 'text-white')}>
+            <span className={cn('font-bold text-lg leading-tight', !isTransparent ? 'text-slate-900' : 'text-white')}>
               PT. TEKNOTAMA BARU
             </span>
-            <span className={cn('text-[10px] tracking-widest uppercase', !isTransparent ? 'text-slate-500' : 'text-slate-200')}>
+            <span className={cn('text-[10px] tracking-widest uppercase', !isTransparent ? 'text-slate-500' : 'text-slate-300')}>
               Service & Procurement
             </span>
           </div>
@@ -65,9 +59,9 @@ export const Navbar: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  'text-sm font-medium transition-colors hover:text-accent',
+                  'text-sm font-medium transition-colors hover:text-primary',
                   location.pathname === item.path
-                    ? 'text-accent'
+                    ? 'text-primary'
                     : !isTransparent
                     ? 'text-slate-700'
                     : 'text-white'
@@ -79,10 +73,13 @@ export const Navbar: React.FC = () => {
           })}
           <button 
             onClick={toggleLanguage}
-            className="flex items-center space-x-1 text-sm font-medium text-slate-400 hover:text-accent"
+            className={cn(
+              "flex items-center space-x-1 text-sm font-medium hover:text-primary transition-colors",
+              !isTransparent ? "text-slate-500" : "text-slate-300"
+            )}
           >
             <Globe className="w-4 h-4" />
-            <span>{i18n.language === 'id' ? 'ID | EN' : 'EN | ID'}</span>
+            <span>{i18n.language?.startsWith('id') ? 'ID | EN' : 'EN | ID'}</span>
           </button>
           <Link
             to="/contact"
@@ -132,7 +129,7 @@ export const Navbar: React.FC = () => {
             className="flex items-center space-x-2 text-lg font-medium py-2 border-b border-slate-100 text-slate-700"
           >
             <Globe className="w-5 h-5" />
-            <span>{i18n.language === 'id' ? 'Change to English' : 'Ganti ke Bahasa Indonesia'}</span>
+            <span>{i18n.language?.startsWith('id') ? 'Change to English' : 'Ganti ke Bahasa Indonesia'}</span>
           </button>
           <Link
             to="/contact"

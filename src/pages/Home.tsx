@@ -131,11 +131,11 @@ export const Home: React.FC = () => {
                   <Zap className="w-8 h-8 text-primary group-hover:text-white" />
                 </div>
                 <span className="text-xs font-bold text-accent uppercase tracking-widest mb-2 block">
-                  {service.category === 'Solution' ? 'Solusi Layanan' : 'Pengadaan Barang'}
+                  {service.category === 'Solution' ? t('services.cat1Title') : t('services.cat2Title')}
                 </span>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <h3 className="text-xl font-bold mb-3">{t(`services.items.${service.id}.title`)}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                  {service.description}
+                  {t(`services.items.${service.id}.description`)}
                 </p>
                 <Link to="/services" className="text-primary font-bold text-sm inline-flex items-center group-hover:translate-x-1 transition-transform">
                   {t('home.serviceDetail')} <ArrowRight className="ml-2 w-4 h-4" />

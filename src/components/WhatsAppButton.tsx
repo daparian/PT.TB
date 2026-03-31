@@ -1,7 +1,11 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
+import { useTranslation } from 'react-i18next';
+
 export const WhatsAppButton: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <a
       href="https://wa.me/6281370742417"
@@ -12,7 +16,7 @@ export const WhatsAppButton: React.FC = () => {
     >
       <MessageCircle className="w-6 h-6" />
       <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 whitespace-nowrap font-medium">
-        Hubungi Kami
+        {t('footer.contact')}
       </span>
     </a>
   );

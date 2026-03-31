@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, Calendar } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const PROJECTS = [
   { id: 1, title: 'Pengadaan Infrastruktur IT Gedung Perkantoran', client: 'PT. Maju Bersama', year: '2025', image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=600' },
@@ -10,13 +11,15 @@ const PROJECTS = [
 ];
 
 export const Portfolio: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className="pt-20">
-      <section className="bg-slate-900 py-24 text-center">
+    <div>
+      <section className="bg-slate-900 pt-40 pb-24 text-center">
         <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Portfolio Proyek</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t('portfolio.title')}</h1>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Rekam jejak kesuksesan kami dalam menangani berbagai proyek pengadaan dan layanan jasa untuk klien-klien ternama.
+            {t('portfolio.subtitle')}
           </p>
         </div>
       </section>
@@ -35,7 +38,7 @@ export const Portfolio: React.FC = () => {
               >
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={t(`portfolio.items.${project.id}.title`)}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -45,10 +48,10 @@ export const Portfolio: React.FC = () => {
                     <Calendar className="w-3 h-3" />
                     <span>{project.year}</span>
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-white/70 text-sm mb-6">Klien: {project.client}</p>
+                  <h3 className="text-2xl font-bold mb-2">{t(`portfolio.items.${project.id}.title`)}</h3>
+                  <p className="text-white/70 text-sm mb-6">{t('portfolio.client')} {t(`portfolio.items.${project.id}.client`, { defaultValue: project.client })}</p>
                   <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 px-6 py-2 rounded-full text-sm font-bold flex items-center space-x-2 transition-all">
-                    <span>Lihat Detail</span>
+                    <span>{t('portfolio.viewDetail')}</span>
                     <ExternalLink className="w-4 h-4" />
                   </button>
                 </div>
@@ -61,7 +64,7 @@ export const Portfolio: React.FC = () => {
       {/* Client Logos Again (Consistent with Home) */}
       <section className="py-24 bg-slate-50">
         <div className="container-custom">
-          <h2 className="text-center text-2xl font-bold mb-12">Klien & Mitra Kami</h2>
+          <h2 className="text-center text-2xl font-bold mb-12">{t('portfolio.partnersTitle')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-40 grayscale">
             {[1, 2, 3, 4, 5, 6].map(i => (
               <div key={i} className="h-12 bg-slate-300 rounded-lg animate-pulse" />

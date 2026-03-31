@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Target, Eye, History, Award } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const About: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className="pt-20">
+    <div>
       {/* Page Header */}
-      <section className="bg-slate-900 py-24 relative overflow-hidden">
+      <section className="bg-slate-900 pt-40 pb-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920"
@@ -21,10 +24,10 @@ export const About: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
-            Tentang Kami
+            {t('about.title')}
           </motion.h1>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Mengenal lebih dekat PT. TEKNOTAMA BARU, visi, misi, dan perjalanan kami dalam memberikan layanan terbaik bagi industri di Indonesia.
+            {t('about.subtitle')}
           </p>
         </div>
       </section>
@@ -34,12 +37,12 @@ export const About: React.FC = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-slate-900 border-l-4 border-primary pl-4">Profil Perusahaan</h2>
+              <h2 className="text-3xl font-bold text-slate-900 border-l-4 border-primary pl-4">{t('about.profileTitle')}</h2>
               <p className="text-slate-600 leading-relaxed">
-                Didirikan dengan semangat untuk memberikan solusi operasional yang efisien, PT. TEKNOTAMA BARU telah berkembang menjadi salah satu penyedia jasa dan pengadaan barang terkemuka di Indonesia. Kami memahami bahwa setiap bisnis memiliki tantangan unik, itulah sebabnya kami menawarkan pendekatan yang dipersonalisasi untuk setiap klien kami.
+                {t('about.profileDesc1')}
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Fokus utama kami adalah pada kualitas, integritas, dan inovasi. Dengan jaringan pemasok yang luas dan tim profesional yang berdedikasi, kami memastikan bahwa setiap proyek yang kami tangani diselesaikan dengan standar keunggulan tertinggi.
+                {t('about.profileDesc2')}
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -71,9 +74,9 @@ export const About: React.FC = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
                 <Eye className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold mb-6">Visi Kami</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('about.visionTitle')}</h3>
               <p className="text-slate-600 leading-relaxed">
-                Menjadi mitra bisnis terdepan dan terpercaya di Indonesia dalam menyediakan solusi layanan jasa dan pengadaan barang yang inovatif, berkualitas, dan berkelanjutan.
+                {t('about.visionDesc')}
               </p>
             </motion.div>
 
@@ -84,19 +87,19 @@ export const About: React.FC = () => {
               <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-8">
                 <Target className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="text-2xl font-bold mb-6">Misi Kami</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('about.missionTitle')}</h3>
               <ul className="space-y-4 text-slate-600">
                 <li className="flex items-start space-x-3">
                   <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0" />
-                  <span>Memberikan layanan jasa outsourcing dan pemeliharaan teknis yang profesional dan terstandarisasi.</span>
+                  <span>{t('about.mission1')}</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0" />
-                  <span>Menyediakan produk pengadaan barang berkualitas tinggi dengan harga yang kompetitif.</span>
+                  <span>{t('about.mission2')}</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0" />
-                  <span>Membangun hubungan kemitraan jangka panjang yang saling menguntungkan dengan seluruh pemangku kepentingan.</span>
+                  <span>{t('about.mission3')}</span>
                 </li>
               </ul>
             </motion.div>
@@ -108,15 +111,15 @@ export const About: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Nilai-Nilai Perusahaan</h2>
-            <p className="text-slate-600">Prinsip yang membimbing kami dalam setiap tindakan dan keputusan.</p>
+            <h2 className="text-3xl font-bold mb-4">{t('about.valuesTitle')}</h2>
+            <p className="text-slate-600">{t('about.valuesSubtitle')}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: History, title: 'Integritas', desc: 'Kejujuran dan transparansi dalam setiap transaksi bisnis.' },
-              { icon: Award, title: 'Kualitas', desc: 'Berkomitmen pada standar tertinggi dalam produk dan layanan.' },
-              { icon: Target, title: 'Inovasi', desc: 'Terus mencari cara baru untuk memberikan nilai lebih bagi klien.' },
-              { icon: Eye, title: 'Fokus Klien', desc: 'Menempatkan kebutuhan klien sebagai prioritas utama kami.' },
+              { icon: History, title: t('about.value1Title'), desc: t('about.value1Desc') },
+              { icon: Award, title: t('about.value2Title'), desc: t('about.value2Desc') },
+              { icon: Target, title: t('about.value3Title'), desc: t('about.value3Desc') },
+              { icon: Eye, title: t('about.value4Title'), desc: t('about.value4Desc') },
             ].map((value, index) => (
               <div key={index} className="text-center space-y-4">
                 <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mx-auto">
