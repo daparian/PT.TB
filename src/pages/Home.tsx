@@ -2,9 +2,12 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, CheckCircle, Users, Shield, Zap, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { SERVICES } from '../constants';
 
 export const Home: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -27,27 +30,27 @@ export const Home: React.FC = () => {
             className="max-w-3xl"
           >
             <span className="text-accent font-bold tracking-widest uppercase mb-4 block">
-              Solusi B2B Terintegrasi
+              {t('home.subtitle')}
             </span>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Solusi Terpercaya untuk <span className="text-accent">Jasa & Pengadaan</span> Barang
+              {t('home.title1')} <span className="text-accent">{t('home.title2')}</span> {t('home.title3')}
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed">
-              Membantu bisnis Anda tumbuh lebih efisien dengan layanan outsourcing profesional dan pengadaan barang berkualitas tinggi yang disesuaikan dengan kebutuhan industri Anda.
+              {t('home.desc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/contact"
                 className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center transition-all group"
               >
-                Minta Penawaran
+                {t('home.quoteBtn')}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/services"
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center transition-all"
               >
-                Lihat Layanan
+                {t('home.servicesBtn')}
               </Link>
             </div>
           </motion.div>
@@ -72,22 +75,22 @@ export const Home: React.FC = () => {
               />
               <div className="absolute -bottom-8 -right-8 bg-primary p-8 rounded-2xl shadow-xl hidden md:block">
                 <span className="text-4xl font-bold text-white block mb-1">10+</span>
-                <span className="text-white/80 text-sm uppercase tracking-wider">Tahun Pengalaman</span>
+                <span className="text-white/80 text-sm uppercase tracking-wider">{t('home.experience')}</span>
               </div>
             </motion.div>
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Membangun Efisiensi Bisnis Melalui Kemitraan Strategis
+                {t('home.introTitle')}
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                PT. TEKNOTAMA BARU hadir sebagai mitra strategis bagi perusahaan yang menginginkan fokus pada core business mereka. Kami menangani segala kebutuhan pendukung operasional, mulai dari pengelolaan fasilitas hingga penyediaan infrastruktur fisik.
+                {t('home.introDesc')}
               </p>
               <ul className="space-y-4">
                 {[
-                  'Standar kualitas internasional',
-                  'Tim profesional dan terlatih',
-                  'Rantai pasok yang handal',
-                  'Layanan purna jual terjamin'
+                  t('home.introList1'),
+                  t('home.introList2'),
+                  t('home.introList3'),
+                  t('home.introList4')
                 ].map((item) => (
                   <li key={item} className="flex items-center space-x-3">
                     <CheckCircle className="text-primary w-5 h-5" />
@@ -96,7 +99,7 @@ export const Home: React.FC = () => {
                 ))}
               </ul>
               <Link to="/about" className="text-primary font-bold inline-flex items-center hover:underline">
-                Pelajari Lebih Lanjut <ArrowRight className="ml-2 w-4 h-4" />
+                {t('home.learnMore')} <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -107,9 +110,9 @@ export const Home: React.FC = () => {
       <section className="py-24 bg-slate-50">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Layanan Unggulan Kami</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.servicesTitle')}</h2>
             <p className="text-slate-600">
-              Kami menyediakan solusi komprehensif yang dibagi menjadi dua pilar utama: Solusi Layanan (Service Solutions) dan Pengadaan Barang (Procurement).
+              {t('home.servicesDesc')}
             </p>
           </div>
 
@@ -135,7 +138,7 @@ export const Home: React.FC = () => {
                   {service.description}
                 </p>
                 <Link to="/services" className="text-primary font-bold text-sm inline-flex items-center group-hover:translate-x-1 transition-transform">
-                  Detail Layanan <ArrowRight className="ml-2 w-4 h-4" />
+                  {t('home.serviceDetail')} <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </motion.div>
             ))}
@@ -149,13 +152,13 @@ export const Home: React.FC = () => {
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Mengapa Memilih PT. TEKNOTAMA BARU?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('home.whyUsTitle')}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {[
-                  { icon: Shield, title: 'Terpercaya', desc: 'Memiliki rekam jejak yang solid dengan berbagai klien korporasi.' },
-                  { icon: Zap, title: 'Cepat & Tepat', desc: 'Proses pengadaan dan layanan yang efisien untuk menghemat waktu Anda.' },
-                  { icon: Users, title: 'Profesional', desc: 'Didukung oleh tenaga ahli yang berpengalaman di bidangnya.' },
-                  { icon: Award, title: 'Kualitas Terbaik', desc: 'Hanya menyediakan produk dan layanan dengan standar tertinggi.' },
+                  { icon: Shield, title: t('home.whyUs1Title'), desc: t('home.whyUs1Desc') },
+                  { icon: Zap, title: t('home.whyUs2Title'), desc: t('home.whyUs2Desc') },
+                  { icon: Users, title: t('home.whyUs3Title'), desc: t('home.whyUs3Desc') },
+                  { icon: Award, title: t('home.whyUs4Title'), desc: t('home.whyUs4Desc') },
                 ].map((item, index) => (
                   <div key={index} className="space-y-3">
                     <item.icon className="w-10 h-10 text-accent" />
@@ -166,15 +169,15 @@ export const Home: React.FC = () => {
               </div>
             </div>
             <div className="bg-white/10 backdrop-blur-lg p-10 rounded-3xl border border-white/20">
-              <h3 className="text-2xl font-bold mb-6">Siap Mengoptimalkan Bisnis Anda?</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('home.ctaTitle')}</h3>
               <p className="text-white/80 mb-8">
-                Hubungi tim konsultan kami untuk mendiskusikan kebutuhan spesifik perusahaan Anda dan dapatkan penawaran harga yang kompetitif.
+                {t('home.ctaDesc')}
               </p>
               <Link
                 to="/contact"
                 className="bg-white text-primary hover:bg-slate-100 px-8 py-4 rounded-full font-bold text-lg block text-center transition-all"
               >
-                Hubungi Kami Sekarang
+                {t('home.ctaBtn')}
               </Link>
             </div>
           </div>
@@ -185,7 +188,7 @@ export const Home: React.FC = () => {
       <section className="py-16 bg-white border-b border-slate-100">
         <div className="container-custom">
           <p className="text-center text-slate-400 font-bold uppercase tracking-widest text-xs mb-10">
-            Telah Dipercaya Oleh Berbagai Perusahaan
+            {t('home.partners')}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
             {/* Placeholder Logos */}

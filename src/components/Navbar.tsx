@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { NAV_ITEMS } from '../constants';
 import { cn } from '../lib/utils';
 
 export const Navbar: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isTransparent = isHomePage && !isScrolled;
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'id' ? 'en' : 'id';
+    i18n.changeLanguage(newLang);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,31 +58,37 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={cn(
-                'text-sm font-medium transition-colors hover:text-accent',
-                location.pathname === item.path
-                  ? 'text-accent'
-                  : !isTransparent
-                  ? 'text-slate-700'
-                  : 'text-white'
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <button className="flex items-center space-x-1 text-sm font-medium text-slate-400 hover:text-accent">
+          {NAV_ITEMS.map((item) => {
+            const translationKey = item.path === '/' ? 'home' : item.path.substring(1);
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-accent',
+                  location.pathname === item.path
+                    ? 'text-accent'
+                    : !isTransparent
+                    ? 'text-slate-700'
+                    : 'text-white'
+                )}
+              >
+                {t(`nav.${translationKey}`)}
+              </Link>
+            );
+          })}
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center space-x-1 text-sm font-medium text-slate-400 hover:text-accent"
+          >
             <Globe className="w-4 h-4" />
-            <span>ID | EN</span>
+            <span>{i18n.language === 'id' ? 'ID | EN' : 'EN | ID'}</span>
           </button>
           <Link
             to="/contact"
             className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all"
           >
-            Minta Penawaran
+            {t('nav.quote')}
           </Link>
         </div>
 
@@ -98,25 +111,35 @@ export const Navbar: React.FC = () => {
         )}
       >
         <div className="container-custom flex flex-col space-y-4">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={() => setIsOpen(false)}
-              className={cn(
-                'text-lg font-medium py-2 border-b border-slate-100',
-                location.pathname === item.path ? 'text-primary' : 'text-slate-700'
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const translationKey = item.path === '/' ? 'home' : item.path.substring(1);
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  'text-lg font-medium py-2 border-b border-slate-100',
+                  location.pathname === item.path ? 'text-primary' : 'text-slate-700'
+                )}
+              >
+                {t(`nav.${translationKey}`)}
+              </Link>
+            );
+          })}
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center space-x-2 text-lg font-medium py-2 border-b border-slate-100 text-slate-700"
+          >
+            <Globe className="w-5 h-5" />
+            <span>{i18n.language === 'id' ? 'Change to English' : 'Ganti ke Bahasa Indonesia'}</span>
+          </button>
           <Link
             to="/contact"
             onClick={() => setIsOpen(false)}
             className="bg-primary text-white text-center py-3 rounded-lg font-bold"
           >
-            Minta Penawaran
+            {t('nav.quote')}
           </Link>
         </div>
       </div>
