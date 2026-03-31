@@ -27,10 +27,18 @@ export const Navbar: React.FC = () => {
       )}
     >
       <div className="container-custom flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-xl">TB</span>
-          </div>
+        <Link to="/" className="flex items-center space-x-3">
+          <svg viewBox="0 0 100 100" className="w-11 h-11 rounded shadow-sm" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#7ab837" />
+                <stop offset="100%" stopColor="#4a8c24" />
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" fill="url(#logoGrad)" stroke="#4b7cba" strokeWidth="4" />
+            <text x="12" y="72" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">T</text>
+            <text x="42" y="90" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">B</text>
+          </svg>
           <div className="flex flex-col">
             <span className={cn('font-bold text-lg leading-tight', !isTransparent ? 'text-primary' : 'text-white')}>
               PT. TEKNOTAMA BARU
