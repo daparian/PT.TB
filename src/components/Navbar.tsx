@@ -36,8 +36,8 @@ export const Navbar: React.FC = () => {
               </linearGradient>
             </defs>
             <rect width="100" height="100" fill="url(#logoGrad)" stroke="#4b7cba" strokeWidth="4" />
-            <text x="12" y="72" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">T</text>
-            <text x="42" y="90" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">B</text>
+            <text x="13" y="66" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">T</text>
+            <text x="43" y="84" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="72" fill="white" stroke="#4b7cba" strokeWidth="3">B</text>
           </svg>
           <div className="flex flex-col">
             <span className={cn('font-bold text-lg leading-tight', !isTransparent ? 'text-primary' : 'text-white')}>
